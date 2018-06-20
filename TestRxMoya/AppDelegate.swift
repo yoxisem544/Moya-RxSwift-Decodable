@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftyBeaver
+let log = SwiftyBeaver.self
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+
+    let console = ConsoleDestination()
+    log.addDestination(console)
+    let platform = SBPlatformDestination(appID: "lRPG8a",
+                                         appSecret: "lKTxztxwmhy6yoxvpf6qwiwwycufx5um",
+                                         encryptionKey: "46Zur3mHmXlMlt1cg2lZnp7snppt1vlm")
+    log.addDestination(platform)
+
     return true
   }
 
